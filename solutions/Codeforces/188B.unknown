@@ -1,0 +1,23 @@
+//Problem Name : 188B - A + Reverse B
+//Execution Time : 30 ms
+//Memory : 1100 KB
+iin [0]
+iin [1]
+
+co rev {
+    eq [44] [1] 0
+    if [44]
+    ac
+    
+    mod [2] [1] 10
+
+    mul [3] [3] 10
+    add [3] [3] [2]
+
+    div [1] [1] 10
+}
+
+ca rev
+add [30] [0] [3]
+iout [30]
+ac

@@ -1,0 +1,10 @@
+//Problem Name : 188A - Hexagonal Numbers
+//Execution Time : 30 ms
+//Memory : 1100 KB
+iin [0]
+set [1] [0]
+mul [0] [0] [0]
+mul [0] [0] 2
+sub [0] [0] [1]
+iout [0]
+ac

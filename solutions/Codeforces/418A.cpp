@@ -1,3 +1,6 @@
+//Problem Name : 418A - Football
+//Execution Time : 139 ms
+//Memory : 0 KB
 #include <vector> 
 #include <list> 
 #include <map> 
@@ -31,19 +34,19 @@ typedef pair<int, int> pii;
 int n,k;
 
 int main() {
-	scanf("%d", &n);
-	scanf("%d", &k);
-	int matches = n*(n-1)/2;
-	int wins = n*k;
-	if (matches < wins) {
-		printf("-1\n");
-		return 0;
-	}
-	
-	printf("%d\n", wins);
-	for (int w = 1; w <= k; w++) {
-		for (int i = 0; i < n; i++) {
-			printf("%d %d\n", i+1, ((i+w)%n)+1);
-		}
-	}
+    scanf("%d", &n);
+    scanf("%d", &k);
+    int matches = n*(n-1)/2;
+    int wins = n*k;
+    if (matches < wins) {
+        printf("-1\n");
+        return 0;
+    }
+    
+    printf("%d\n", wins);
+    for (int w = 1; w <= k; w++) {
+        for (int i = 0; i < n; i++) {
+            printf("%d %d\n", i+1, ((i+w)%n)+1);
+        }
+    }
 }

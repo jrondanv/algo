@@ -1,3 +1,6 @@
+//Problem Name : 418B - Cunning Gena
+//Execution Time : 218 ms
+//Memory : 8200 KB
 #include <vector> 
 #include <list> 
 #include <map> 

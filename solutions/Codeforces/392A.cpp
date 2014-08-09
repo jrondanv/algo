@@ -1,3 +1,6 @@
+//Problem Name : 392A - Blocked Points
+//Execution Time : 420 ms
+//Memory : 0 KB
 #include <vector> 
 #include <list> 
 #include <map> 

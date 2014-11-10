@@ -114,12 +114,8 @@ int main() {
 
 		n = x.size();
 		int first = FindProperty(x);
-		/*for (int i = 0; i < n; i++) {
-			printf("%d ", x[i]);
-		}
-		printf("\n");
-		printf("first = %d (%d)\n", first, x[first]);
-		*/long long ans = x[first];
+		
+		long long ans = x[first];
 		x[add(first)] += x[first]-1;
 
 		for (int k = add(first); k != first; k = add(k) ) {

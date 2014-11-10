@@ -23,7 +23,7 @@ int n, cnt, sta;
 int next[4000][26];
 int lk[4000];
 int ft[4000];
-int dp[4000][101][2][2];
+int dp[4000][101];
 
 void create(int node, int idx) {
 	next[node][idx] = cnt;
@@ -54,10 +54,8 @@ void add(char* str) {
 	}
 }
 
-int calc(int v, int tot_st, bool is, bool ia, int d) {
-	if (is && ia) return 0;
-
-	int& ret = dp[v][tot_st][is][ia];
+int calc(int v, int tot_st, int d) {
+	int& ret = dp[v][tot_st];
 	if (ret == -1) {
 		ret = 100000000;
 
@@ -65,22 +63,18 @@ int calc(int v, int tot_st, bool is, bool ia, int d) {
 		if (lk[v] == -1) lim = tot_st;
 		for (int st = std::min(tot_st, children[v]); st >= lim; st--) {
 			int th = 0;
-			bool iis = is, iia = ia;
 
-			if (st == 1 && !iis) {
-				th += d;
-				iis = true;
-			}
-			if (children[v] - st == 1 && !iia) {
-				th += d;
-				iia = true;
-			}
+			if (st == 1) th += d;
+			if (children[v] - st == 1) th += d;
 
 			if (ft[v] != -1) {
-				if (children[v] - st >= st) th += calc(ft[v], st, iis, iia, d+1); 
-				else th += calc(ft[v], children[v] - st, iia, iis, d+1);
+				if (children[v] - st >= st) th += calc(ft[v], st, d+1); 
+				else th += calc(ft[v], children[v] - st, d+1);
+
+				if (st == 1) th -= d+1;
+				if (children[v] - st == 1) th -= d+1;
 			}
-			if (lk[v] != -1) th += calc(lk[v], tot_st - st, is, ia, d); 
+			if (lk[v] != -1) th += calc(lk[v], tot_st - st, d); 
 			
 			if (th >= 1000000000) break;
 			ret = std::min(ret, th);
@@ -93,7 +87,6 @@ int calc(int v, int tot_st, bool is, bool ia, int d) {
 int main() {
 	while (scanf("%d", &n) > 0) {
 		cnt = 1;
-		sta = 0;
 		
 		memset(dp,-1,sizeof(dp));
 		memset(next,-1,sizeof(next));
@@ -107,6 +100,6 @@ int main() {
 			add(ss);
 		}
 
-		printf("%d\n", n*calc(ft[0],n,false,false,1));
+		printf("%d\n", n*calc(ft[0],n,1));
 	}
 }
